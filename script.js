@@ -48,11 +48,10 @@
 
 // console.log(convertArrayToObject);
 
-
 // 3) შექმენით კლასი car, რომელსაც ექნება 4 ფროფერთი (brand,model, speed,motion).  ბრენდი და მოდელი კლასს კონსტრუქტორში გადაეცემა, ხოლო speed კონსტრუქტორში დიფოლტად ინიციალიზდება და მისი მნიშვნელობა არის 0.
 // ასევე დიფოლტად ინიციალიზდება motion,რომლის საწყისი მნიშვნელობაა “The car is not moving”.
 // // კლასს უნდა ჰქონდეს შემდეგი მეთოდები:
- 
+
 // check_motion - მანქანის სიჩქარის მიხედვით ცვლის motion ცვლადს: თუ მანქანა მოძრაობს-”მანქანა მოძრაობს”,წინააღმდეგ შემთხვევაში- “მანქანა გაჩერებულია”.
 // accelerate - იღებს პარამეტრად სიჩქარეს და მანქანის სიჩქარეს ზრდის შესაბამისი მნიშვნელობით.
 // brake - იღებს პარამეტრად სიჩქარეს და მანქანის სიჩქარეს ამცირებს შესაბამისი მნიშვნელობით(გაითვალისწინეთ,რომ გადაცემული სიჩქარე არსებულ სიჩქარეს შეიძლება აღემატებოდეს).
@@ -62,18 +61,72 @@
 // მაგალითად: მანქანა Ford Mustang მოძრაობს 80 კმ/სთ სიჩქარით და სტატუსია: მანქანა მოძრაობს
 
 // მითითება: ფუნქცია check_motion უნდა გამოიძახებოდეს accelerate,brake და emergency_brake ფუნქციებში, რათა motion ცვლადი სწორად ასახავდეს მანქანის სტატუსს.
-// ჩაატარეთ სხვადასხვა ოპერაციები მანქანაზე (accelerate,brake და ა.შ) და 
+// ჩაატარეთ სხვადასხვა ოპერაციები მანქანაზე (accelerate,brake და ა.შ) და
 // თითოეული ცვლილების შემდეგ კონსოლში გამოიტანეთ სტატუსი.
 
+// class Car {
+//   constructor(brand, model) {
+//     this.brand = brand;
+//     this.model = model;
+//     this.speed = 0;
+//     this.motion = "The car is not moving";
+//   }
+//   checkMotion = () => {
+//     if (this.speed > 0) {
+//       return (this.motion = "The car is moving");
+//     } else {
+//       return (this.motion = "The car is not moving");
+//     }
+//   };
+//   accalarate = (speed) => {
+//     this.speed = this.speed + speed;
+//     return this.speed;
+//   };
+//   brake = (speed) => {
+//     this.speed = this.speed - speed;
+//     return this.speed;
+//   };
+//   emergencyBrake = () => (this.speed = 0);
+//   status = () => {
+//     return `მანქანა ${this.brand} ${this.model} მოძრაობს ${this.speed} კმ/სთ სიჩქარით და სტატუსია: ${car1.checkMotion()}`;
+//   };
+// }
 
-class Car {
-    constructor(brand, model, speed, motion) {
-    this.brand = brand;
-    this.model = model;
-    this.speed = 0;
-    this.motion = motion;
-    }
-    outputInfo = () => {
-        console.log();
-    }
-}
+// const car1 = new Car("Tesla", "model 3");
+// console.log(car1);
+// console.log(car1.accalarate(80));
+// console.log(car1);
+// console.log(car1.brake(20));
+// console.log(car1);
+// console.log(car1.checkMotion());
+// console.log(car1.status());
+// console.log(car1.emergencyBrake());
+// console.log(car1.checkMotion());
+
+// 4)  შექმენით ფუნქცია addAsync,რომელიც იღებს ორ პარამეტრს და აბრუნებს პრომისს.
+//     თუ ორივე პარამეტრი გადაეცემა(undefined არ არის და ორივე პარამეტრი რიცხვია) პრომისი უნდა დარიზოლვდეს(resolve),
+//     წინააღმდეგ შემთხვევაში დარიჯექთდეს(reject). გამოიძახეთ ფუნქცია რამდენიმეჯერ,
+//     სხვადასხვა პარამეტრით და კონსოლში გამოიტანეთ შედეგი.
+
+const value1 = 2;
+const value2 = 4;
+
+// const value1 = 10;
+// const value2 = 8;
+
+// const value1 = 5;
+// const value2 = 5;
+
+const addAsync = new Promise((resolve, reject) => {
+  if (value1 < value2) {
+    resolve(`${value1} < ${value2}`);
+  } else if (value1 > value2) {
+    resolve(`${value1} > ${value2}`);
+  } else {
+    reject("error");
+  }
+});
+
+promise
+.then((value)=>console.log(value))
+.catch((error)=>console.log(error))
