@@ -108,25 +108,16 @@
 //     წინააღმდეგ შემთხვევაში დარიჯექთდეს(reject). გამოიძახეთ ფუნქცია რამდენიმეჯერ,
 //     სხვადასხვა პარამეტრით და კონსოლში გამოიტანეთ შედეგი.
 
-// const value1 = 2;
-// const value2 = 4;
+const addAsync = (value1, value2) => {
+  return new Promise((resolve, reject) => {
+    if (value1 && value2 && typeof value1 === 'number' && typeof value2 === 'number') {
+      resolve(value1 + value2);
+    } else {
+      reject("error");
+    }
+  });
+};
 
-const value1 = 10;
-const value2 = 8;
-
-// const value1 = 5;
-// const value2 = 5;
-
-const addAsync = new Promise((resolve, reject) => {
-  if (value1 < value2) {
-    resolve(`${value1} < ${value2}`);
-  } else if (value1 > value2) {
-    resolve(`${value1} > ${value2}`);
-  } else {
-    reject("error");
-  }
-});
-
-addAsync
+addAsync(10, 12)
   .then((value) => console.log(value))
   .catch((error) => console.log(error));
