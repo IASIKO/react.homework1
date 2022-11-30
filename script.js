@@ -117,7 +117,7 @@ const value2 = 4;
 // const value1 = 5;
 // const value2 = 5;
 
-const addAsync = new Promise((resolve, reject) => {
+const addAsync = new addAsync((resolve, reject) => {
   if (value1 < value2) {
     resolve(`${value1} < ${value2}`);
   } else if (value1 > value2) {
@@ -128,5 +128,5 @@ const addAsync = new Promise((resolve, reject) => {
 });
 
 promise
-.then((value)=>console.log(value))
-.catch((error)=>console.log(error))
+  .then((value) => console.log(value))
+  .catch((error) => console.log(error));
