@@ -64,60 +64,64 @@
 // ჩაატარეთ სხვადასხვა ოპერაციები მანქანაზე (accelerate,brake და ა.შ) და
 // თითოეული ცვლილების შემდეგ კონსოლში გამოიტანეთ სტატუსი.
 
-// class Car {
-//   constructor(brand, model) {
-//     this.brand = brand;
-//     this.model = model;
-//     this.speed = 0;
-//     this.motion = "The car is not moving";
-//   }
-//   checkMotion = () => {
-//     if (this.speed > 0) {
-//       return (this.motion = "The car is moving");
-//     } else {
-//       return (this.motion = "The car is not moving");
-//     }
-//   };
-//   accalarate = (speed) => {
-//     this.speed = this.speed + speed;
-//     return this.speed;
-//   };
-//   brake = (speed) => {
-//     this.speed = this.speed - speed;
-//     return this.speed;
-//   };
-//   emergencyBrake = () => (this.speed = 0);
-//   status = () => {
-//     return `მანქანა ${this.brand} ${this.model} მოძრაობს ${this.speed} კმ/სთ სიჩქარით და სტატუსია: ${car1.checkMotion()}`;
-//   };
-// }
+class Car {
+  constructor(brand, model) {
+    this.brand = brand;
+    this.model = model;
+    this.speed = 0;
+    this.motion = "The car is not moving";
+  }
+  checkMotion = () => {
+    if (this.speed > 0) {
+      return (this.motion = "The car is moving");
+    } else {
+      return (this.motion = "The car is not moving");
+    }
+  };
+  accalarate = (speed) => {
+    this.speed = this.speed + speed;
+    return this.speed;
+  };
+  brake = (speed) => {
+    if (speed > this.speed) {
+      return (this.speed = 0);
+    } else {
+      return this.speed -= speed;
+    }
+  };
+  emergencyBrake = () => (this.speed = 0);
+  status = () => {
+    return `მანქანა ${this.brand} ${this.model} მოძრაობს ${
+      this.speed
+    } კმ/სთ სიჩქარით და სტატუსია: ${this.checkMotion()}`;
+  };
+}
 
-// const car1 = new Car("Tesla", "model 3");
-// console.log(car1);
-// console.log(car1.accalarate(80));
-// console.log(car1);
-// console.log(car1.brake(20));
-// console.log(car1);
-// console.log(car1.checkMotion());
-// console.log(car1.status());
-// console.log(car1.emergencyBrake());
-// console.log(car1.checkMotion());
+const car1 = new Car("Tesla", "model 3");
+console.log(car1);
+console.log(car1.accalarate(80));
+console.log(car1.checkMotion());
+console.log(car1.brake(100));
+console.log(car1.checkMotion());
+console.log(car1.status());
+console.log(car1.emergencyBrake());
+console.log(car1.checkMotion());
 
 // 4)  შექმენით ფუნქცია addAsync,რომელიც იღებს ორ პარამეტრს და აბრუნებს პრომისს.
 //     თუ ორივე პარამეტრი გადაეცემა(undefined არ არის და ორივე პარამეტრი რიცხვია) პრომისი უნდა დარიზოლვდეს(resolve),
 //     წინააღმდეგ შემთხვევაში დარიჯექთდეს(reject). გამოიძახეთ ფუნქცია რამდენიმეჯერ,
 //     სხვადასხვა პარამეტრით და კონსოლში გამოიტანეთ შედეგი.
 
-const addAsync = (value1, value2) => {
-  return new Promise((resolve, reject) => {
-    if (value1 && value2 && typeof value1 === 'number' && typeof value2 === 'number') {
-      resolve(value1 + value2);
-    } else {
-      reject("error");
-    }
-  });
-};
+// const addAsync = (value1, value2) => {
+//   return new Promise((resolve, reject) => {
+//     if (value1 && value2 && typeof value1 === 'number' && typeof value2 === 'number') {
+//       resolve(value1 + value2);
+//     } else {
+//       reject("error");
+//     }
+//   });
+// };
 
-addAsync(10, 12)
-  .then((value) => console.log(value))
-  .catch((error) => console.log(error));
+// addAsync(10, 12)
+//   .then((value) => console.log(value))
+//   .catch((error) => console.log(error));
